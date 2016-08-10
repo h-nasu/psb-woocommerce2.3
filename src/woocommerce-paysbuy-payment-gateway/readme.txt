@@ -4,7 +4,7 @@ Donate link: https://www.paysbuy.com/support
 Tags: paysbuy, payment gateway, woocommerce, woothemes
 Requires at least: 3.3
 Tested up to: 4.5.2
-Stable tag: 2.3
+Stable tag: 2.3.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -34,8 +34,10 @@ e.g.
 
 2013.03.25 - version 1.0
  * First Release
-== Changelog ==
 
 2015.04.25 - version 2.3
  * Config For WooCommerce 2.3
+
+2016.08.10 - version 2.3.2
+ * Updated to use Paysbuy PHP SDK
 

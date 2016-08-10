@@ -1,0 +1,11 @@
+{
+    "require": {
+        "paysbuy/paysbuy-php": "dev-master"
+    },
+    "repositories": [
+        {
+            "type": "git",
+            "url": "https://jon_paysbuy@bitbucket.org/psb_gateway/paysbuy-php.git"
+        }
+    ]
+}
