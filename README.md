@@ -1,7 +1,7 @@
 # PAYSBUY extension for WooCommerce v2.3 - v2.6
 
 ## Version Compatibility
-- WooCommerce 2.3.x - 2.5.x
+- WooCommerce 2.3.x - 2.6.x
 
 ## Dependencies
 - None
