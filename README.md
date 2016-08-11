@@ -1,4 +1,4 @@
-# PAYSBUY extension for WooCommerce v2.3 - v2.6
+# New PAYSBUY extension for WooCommerce v2.3 - v2.6
 
 ## Version Compatibility
 - WooCommerce 2.3.x - 2.6.x
