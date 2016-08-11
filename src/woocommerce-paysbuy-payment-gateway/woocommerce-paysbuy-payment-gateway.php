@@ -15,10 +15,10 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 require_once dirname(__FILE__).'/vendor/autoload.php'; // load dependencies
 
-if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ) ) ) {
+if (in_array('woocommerce/woocommerce.php', apply_filters('active_plugins', get_option('active_plugins')))) {
 	add_action('plugins_loaded', 'woocommerce_paysbuy_init', 0);
 	add_filter('woocommerce_payment_gateways', 'woocommerce_add_paysbuy_gateway' );
-	load_plugin_textdomain('wc-paysbuy', false, dirname( plugin_basename( __FILE__ ) ) . '/languages');
+	load_plugin_textdomain('wc-paysbuy', false, dirname(plugin_basename(__FILE__)).'/languages');
 }
 
 function woocommerce_paysbuy_init() {
@@ -33,10 +33,10 @@ function woocommerce_paysbuy_init() {
 			
 			global $woocommerce;
 		
-			$this->id			= 'paysbuy';
-			$this->icon 		= WP_PLUGIN_URL . "/" . plugin_basename( dirname(__FILE__)) . '/image/paysbuy.png';
+			$this->id						= 'paysbuy';
+			$this->icon 				= WP_PLUGIN_URL."/".plugin_basename(dirname(__FILE__)).'/image/paysbuy.png';
 			$this->has_fields 	= false;
-			$this->liveurl 		= 'https://www.paysbuy.com/paynow.aspx';
+			$this->liveurl 			= 'https://www.paysbuy.com/paynow.aspx';
 			$this->method_title = __('PaysBuy', 'woocommerce');
 			$this->notify_url   = str_replace('https:', 'http:', add_query_arg('wc-api', 'WC_Gateway_Paysbuy', home_url('/')));
 		
@@ -47,10 +47,10 @@ function woocommerce_paysbuy_init() {
 			$this->init_settings();
 		
 			// Define user set variables
-			$this->title 			= $this->settings['title'];
-			$this->description 		= $this->settings['description'];
-			$this->email 			= $this->settings['email'];
-			$this->psbid 			= $this->settings['psbid'];
+			$this->title				= $this->settings['title'];
+			$this->description	= $this->settings['description'];
+			$this->email				= $this->settings['email'];
+			$this->psbid				= $this->settings['psbid'];
 			$this->securecode		= $this->settings['securecode'];
 		
 			// Actions
@@ -58,8 +58,8 @@ function woocommerce_paysbuy_init() {
 			add_action('woocommerce_update_options_payment_gateways', [&$this, 'process_admin_options']);
 			add_action('woocommerce_update_options_payment_gateways_'.$this->id, [$this, 'process_admin_options']);
 
-			//API hook
-			add_action( 'woocommerce_api_wc_gateway_paysbuy', [$this, 'paysbuy_response'] );
+			// API hook
+			add_action('woocommerce_api_wc_gateway_paysbuy', [$this, 'paysbuy_response']);
 		
 		}
 		
@@ -67,40 +67,40 @@ function woocommerce_paysbuy_init() {
 
 			$this->form_fields = [
 				'enabled' => [
-					'title' => __('Enable/Disable', 'woocommerce'),
-					'type' => 'checkbox',
-					'label' => __('Enable PaysBuy', 'woocommerce'),
-					'default' => 'yes'
+					'title'				=> __('Enable/Disable', 'woocommerce'),
+					'type'				=> 'checkbox',
+					'label'				=> __('Enable PaysBuy', 'woocommerce'),
+					'default'			=> 'yes'
 				],
 				'title' => [
-					'title' => __('Title', 'woocommerce'),
-					'type' => 'text',
-					'description' => __('This controls the title which the user sees during checkout.', 'woocommerce'),
-					'default' => __('PaysBuy', 'woocommerce') 
+					'title'				=> __('Title', 'woocommerce'),
+					'type'				=> 'text',
+					'description'	=> __('This controls the title which the user sees during checkout.', 'woocommerce'),
+					'default'			=> __('PaysBuy', 'woocommerce') 
 				],
 				'description' => [
-					'title' => __('Description', 'woocommerce'),
-					'type' => 'textarea',
-					'description' => __('This controls the description which the user sees during checkout.', 'woocommerce'),
-					'default' => __("You can pay with PaysBuy; You must be PaysBuy account.", 'woocommerce')
+					'title'				=> __('Description', 'woocommerce'),
+					'type'				=> 'textarea',
+					'description'	=> __('This controls the description which the user sees during checkout.', 'woocommerce'),
+					'default'			=> __("You can pay with PaysBuy; You must be PaysBuy account.", 'woocommerce')
 				],
 				'email' => [
-					'title' => __('PaysBuy Email', 'woocommerce'),
-					'type' => 'text',
-					'description' => __('Please enter your PaysBuy email address; this is needed in order to take payment.', 'woocommerce'),
-					'default' => ''
+					'title'				=> __('PaysBuy Email', 'woocommerce'),
+					'type'				=> 'text',
+					'description'	=> __('Please enter your PaysBuy email address; this is needed in order to take payment.', 'woocommerce'),
+					'default'			=> ''
 				],
 				'psbid' => [
-					'title' => __('PaysBuy ID', 'woocommerce'),
-					'type' => 'text',
-					'description' => __('Your PaysBuy merchant ID.', 'woocommerce'),
-					'default' => '' 
+					'title'				=> __('PaysBuy ID', 'woocommerce'),
+					'type'				=> 'text',
+					'description'	=> __('Your PaysBuy merchant ID.', 'woocommerce'),
+					'default'			=> '' 
 				],
 				'securecode' => [
-					'title' => __('Secure Code', 'woocommerce'),
-					'type' => 'text',
-					'description' => __('Your PaysBuy secure code.', 'woocommerce'),
-					'default' => ''
+					'title'				=> __('Secure Code', 'woocommerce'),
+					'type'				=> 'text',
+					'description'	=> __('Your PaysBuy secure code.', 'woocommerce'),
+					'default'			=> ''
 				]
 			];	
 
@@ -116,7 +116,7 @@ function woocommerce_paysbuy_init() {
 
 		}
 		
-		function get_paysbuy_args( $order ) {
+		function get_paysbuy_args($order) {
 		
 			$order_id = $order->id;
 		
@@ -127,15 +127,15 @@ function woocommerce_paysbuy_init() {
 			
 			// PaysBuy Args
 			$paysbuy_args = [
-				'inv'				=> $order_id,
-				'itm'				=> sprintf(__('Order %s', 'woocommerce'), $order->get_order_number())." - ".implode(', ', $item_names),
-				'amt'				=> $order->get_total(),
+				'inv'							=> $order_id,
+				'itm'							=> sprintf(__('Order %s', 'woocommerce'), $order->get_order_number())." - ".implode(', ', $item_names),
+				'amt'							=> $order->get_total(),
 				'resp_front_url'	=> $this->get_return_url($order),
 				'resp_back_url'		=> $this->notify_url,
-				'curr_code'			=> $order->get_order_currency(),
-				'opt_fix_redirect'	=> '1',
-				'method'			=> '1',
-				'language'			=> 'E'
+				'curr_code'				=> $order->get_order_currency(),
+				'opt_fix_redirect'=> '1',
+				'method'					=> '1',
+				'language'				=> 'E'
 			];
 		
 			$paysbuy_args = apply_filters( 'woocommerce_paysbuy_args', $paysbuy_args );
@@ -197,7 +197,7 @@ function woocommerce_paysbuy_init() {
 		
 			$order = new WC_Order($order_id);
 			return array(
-				'result' 	=> 'success',
+				'result'		=> 'success',
 				'redirect'	=> add_query_arg('order', $order->id, add_query_arg('key', $order->order_key, get_permalink(woocommerce_get_page_id('pay'))))
 			);
 
