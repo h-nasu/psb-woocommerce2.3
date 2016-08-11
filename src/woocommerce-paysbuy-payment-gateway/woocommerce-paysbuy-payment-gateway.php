@@ -132,7 +132,7 @@ function woocommerce_paysbuy_init() {
 				'amt'				=> $order->get_total(),
 				'resp_front_url'	=> $this->get_return_url($order),
 				'resp_back_url'		=> $this->notify_url,
-				'curr_type'			=> $this->get_currency_type($order->get_order_currency()),
+				'curr_code'			=> $order->get_order_currency(),
 				'opt_fix_redirect'	=> '1',
 				'method'			=> '1',
 				'language'			=> 'E'
@@ -157,23 +157,6 @@ function woocommerce_paysbuy_init() {
 			$paymentURL = \PaysbuyPaynow::authenticate($paysbuy_args);
 			return $paymentURL;
 
-		}
-
-
-		function get_currency_type($currency) {
-			$codes = [
-				'THB' => 'TH',
-				'AUD' => 'AU',
-				'GBP' => 'GB',
-				'EUR' => 'EU',
-				'HKD' => 'HK',
-				'JPY' => 'JP',
-				'NZD' => 'NZ',
-				'SGD' => 'SG',
-				'CHF' => 'CH',
-				'USD' => 'US'
-			];
-			return $codes[array_key_exists($currency, $codes) ? $currency : 'TH'];
 		}
 		
 		function receipt_page($order_id) {
