@@ -1,5 +1,5 @@
 {
     "require": {
-        "paysbuy/paysbuy-php": "0.1.0"
+        "paysbuy/paysbuy-php": "dev-master"
     }
 }
