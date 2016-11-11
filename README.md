@@ -2,6 +2,7 @@
 
 ## Version Compatibility
 - WooCommerce 2.3.x - 2.6.x
+- PHP version 5.6 and above
 
 ## Dependencies
 - None
