@@ -115,6 +115,21 @@ function woocommerce_paysbuy_init() {
 			echo '</table>';
 
 		}
+
+		function get_paynow_language($locale) {
+			switch ($locale) {
+				case 'th':
+					$l = 'T';
+					break;
+				case 'ja':
+					$l = 'J';
+					break;
+				default:
+					$l = 'E';
+					break;
+			}
+			return $l;
+		}
 		
 		function get_paysbuy_args($order) {
 		
@@ -135,7 +150,7 @@ function woocommerce_paysbuy_init() {
 				'curr_code'				=> $order->get_order_currency(),
 				'opt_fix_redirect'=> '1',
 				'method'					=> '1',
-				'language'				=> 'E'
+				'language'				=> $this->get_paynow_language(get_locale())
 			];
 		
 			$paysbuy_args = apply_filters( 'woocommerce_paysbuy_args', $paysbuy_args );
