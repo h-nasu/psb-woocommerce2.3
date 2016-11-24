@@ -15,13 +15,12 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 require_once dirname(__FILE__).'/vendor/autoload.php'; // load dependencies
 
-if (in_array('woocommerce/woocommerce.php', apply_filters('active_plugins', get_option('active_plugins')))) {
-	add_action('plugins_loaded', 'woocommerce_paysbuy_init', 0);
-	add_filter('woocommerce_payment_gateways', 'woocommerce_add_paysbuy_gateway' );
-	load_plugin_textdomain('wc-paysbuy', false, dirname(plugin_basename(__FILE__)).'/languages');
-}
+add_action('plugins_loaded', 'woocommerce_paysbuy_init', 0);
+load_plugin_textdomain('wc-paysbuy', false, dirname(plugin_basename(__FILE__)).'/languages');
 
 function woocommerce_paysbuy_init() {
+
+	add_filter('woocommerce_payment_gateways', 'woocommerce_add_paysbuy_gateway' );
 	
 	if ( !class_exists( 'WC_Payment_Gateway' ) ) return;
 	
