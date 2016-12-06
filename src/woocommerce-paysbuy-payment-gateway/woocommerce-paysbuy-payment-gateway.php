@@ -37,7 +37,7 @@ function woocommerce_paysbuy_init() {
 			$this->has_fields 	= false;
 			$this->liveurl 			= 'https://www.paysbuy.com/paynow.aspx';
 			$this->method_title = __('PaysBuy', 'woocommerce');
-			$this->notify_url   = add_query_arg('wc-api', 'WC_Gateway_Paysbuy', home_url('/'));
+			$this->notify_url		= WC()->api_request_url( 'WC_Gateway_Paysbuy' );
 		
 			// Load the form fields.
 			$this->init_form_fields();
