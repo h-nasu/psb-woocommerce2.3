@@ -3,7 +3,7 @@
 Plugin Name: WooCommerce PaysBuy Gateway
 Plugin URI: http://www.paysbuy.com/
 Description: Extends WooCommerce with a PaysBuy gateway.
-Version: 2.3.3
+Version: 2.3.4
 Author: PaysBuy
 Author URI: http://www.paysbuy.com/
 
@@ -181,7 +181,7 @@ function woocommerce_paysbuy_init() {
 
 			global $woocommerce;
 
-			if(isset($_REQUEST['result']) && isset($_REQUEST['apCode']) && isset($_REQUEST['amt'])) {
+			if(isset($_POST['result']) && isset($_POST['apCode']) && isset($_POST['amt'])) {
 
 				$order_id = trim(substr($_POST["result"], 2));
 				$order = new WC_Order($order_id);
