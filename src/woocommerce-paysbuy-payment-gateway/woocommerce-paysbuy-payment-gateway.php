@@ -3,7 +3,7 @@
 Plugin Name: WooCommerce PaysBuy Gateway
 Plugin URI: http://www.paysbuy.com/
 Description: Extends WooCommerce with a PaysBuy gateway.
-Version: 2.3.2
+Version: 2.3.3
 Author: PaysBuy
 Author URI: http://www.paysbuy.com/
 
